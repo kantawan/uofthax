@@ -31,7 +31,7 @@ import org.json.JSONObject;
 public class Main extends AppCompatActivity implements Serializable {
     private EditText countDownText;
     private Button countDownButton;
-    private SmsManager smsManager = SmsManager.getDefault();
+    private SmsManager smsManager;
 
     private CountDownTimer countDownTimer;
     private long timeLeft = 600000;
@@ -174,6 +174,7 @@ public class Main extends AppCompatActivity implements Serializable {
 
         countDownText.setText("FUCK");
         try {
+            smsManager = SmsManager.getDefault();
             smsManager.sendTextMessage("+12893888447", null, "HELP!!", null, null);
             Toast.makeText(this, "Your emergency contacts have been contacted.", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
