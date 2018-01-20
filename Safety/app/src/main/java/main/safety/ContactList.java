@@ -70,7 +70,7 @@ public class ContactList extends AppCompatActivity implements Serializable {
         });
     }
 
-    static private ArrayList<String> contacts; // = new ArrayList<>();
+    static ArrayList<String> contacts; // = new ArrayList<>();
     // private String[] contacts = new String[3];
 
     public void saveContacts(String[] a) {
