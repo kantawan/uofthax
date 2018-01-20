@@ -47,4 +47,12 @@
         app:layout_constraintTop_toBottomOf="@+id/enter_text"
         tools:text="okay" />
 
+    <Button
+        android:id="@+id/contact_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="contacts"
+        tools:layout_editor_absoluteX="136dp"
+        tools:layout_editor_absoluteY="330dp" />
+
 </android.support.constraint.ConstraintLayout>
