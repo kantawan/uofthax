@@ -56,7 +56,7 @@ public class Main extends AppCompatActivity {
 
                 // deserialize
                 try {
-                    FileInputStream fis = openFileInput("contacts.txt");
+                    FileInputStream fis = openFileInput("./contacts.txt");
                     ObjectInputStream is = new ObjectInputStream(fis);
                     // AppCompatActivity simpleClass = (AppCompatActivity) is.readObject();
                     is.close();
@@ -79,6 +79,17 @@ public class Main extends AppCompatActivity {
 //                }
             }
 
+        });
+
+        Button close_button =  findViewById(R.id.close_button);
+        close_button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent contactIntent = new Intent(Main.this, ContactList.class);
+                startActivity(contactIntent);
+                close();
+            }
         });
 
         //timer button
@@ -108,7 +119,6 @@ public class Main extends AppCompatActivity {
             countTime();
         }
     }
-
 
     public void countTime(){
 
@@ -154,7 +164,6 @@ public class Main extends AppCompatActivity {
         countDownTimer.cancel();
         countDownButton.setText("Start");
         flag = false;
-
     }
 
     public void updaterTimer(){
@@ -175,21 +184,27 @@ public class Main extends AppCompatActivity {
 
         String[] contacts = ContactList.getContacts();
         Toast.makeText(this, contacts[0], Toast.LENGTH_SHORT).show();
-
         countDownText.setText("FUCK");
-        try {
-            SmsManager smsManager = SmsManager.getDefault();
-            smsManager.sendTextMessage("+16043680917", null, "HELP!!", null, null);
-            Toast.makeText(this, "Your emergency contacts have been contacted.", Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            System.out.println("damn");
+
+        for (int i =0; i<3; i++){
+            if (contacts[i] != null){
+                try {
+                    SmsManager smsManager = SmsManager.getDefault();
+                    smsManager.sendTextMessage("+1" + contacts[i], null, "HELLOOOO!!", null, null);
+                    Toast.makeText(this, "Your emergency contacts have been contacted.", Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    System.out.println("damn");
+                }
+
+            }
         }
+
     }
 
     public void close() {
         // serialize here
         try {
-            FileOutputStream fos = new FileOutputStream("contacts.txt");
+            FileOutputStream fos = new FileOutputStream("./contacts.txt");
             ObjectOutputStream os = new ObjectOutputStream(fos);
             os.writeObject(ContactList.getContacts());
             os.close();
@@ -200,48 +215,4 @@ public class Main extends AppCompatActivity {
             System.out.println("shit");
         }
     }
-
-
-
-//    //erwin
-//    private CountDownTimer timer;
-//    private long  millisLeft;
-//    private TextView countText;
-//    private int counter = 0;
-//    private EditText input;
-//    private SmsManager smsManager = SmsManager.getDefault();
-//
-//    private void trigger() {
-//        smsManager.sendTextMessage("+12893888447", null, input.getText().toString(), null, null);
-//        Toast.makeText(this, "Your emergency contacts have been contacted.", Toast.LENGTH_SHORT).show();
-//    }
-//
-//
-//    public void onStart(View view) {
-//        timer = new CountDownTimer(60 * 1000, 1000){
-//            @Override
-//            public void onTick(long millisLeft){
-//                updateTimer();
-//            }
-//            @Override
-//            public void onFinish(){
-//                // Call trigger() method!!
-//                trigger();
-//            }
-//        }.start();
-//    }
-//    // TODO: call onStart in body of onClick.
-//
-//    public void updateTimer(){
-//        int minutes = (int) millisLeft / 60000;
-//        int seconds = (int) millisLeft % 60000 / 1000;
-//        String timeLeft = "" + minutes + ":";
-//        if (seconds < 10) timeLeft += "0";
-//        timeLeft += seconds + "";
-//
-//        countText.setText(timeLeft);
-//    }
-//
-
-
 }
