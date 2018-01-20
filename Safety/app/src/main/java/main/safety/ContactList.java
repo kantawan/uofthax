@@ -59,7 +59,7 @@ public class ContactList extends AppCompatActivity implements Serializable {
             }
         });
 
-        Button button_three =  findViewById(R.id.button2);
+        Button button_three =  findViewById(R.id.button3);
         button_three.setOnClickListener(new View.OnClickListener() {
 
             @Override

@@ -28,7 +28,7 @@ import android.widget.Toast;
 import org.json.JSONObject;
 
 
-public class Main extends AppCompatActivity implements Serializable {
+public class Main extends AppCompatActivity {
     private EditText countDownText;
     private Button countDownButton;
 
@@ -58,14 +58,15 @@ public class Main extends AppCompatActivity implements Serializable {
                 try {
                     FileInputStream fis = openFileInput("contacts.txt");
                     ObjectInputStream is = new ObjectInputStream(fis);
-                    AppCompatActivity simpleClass = (AppCompatActivity) is.readObject();
+                    // AppCompatActivity simpleClass = (AppCompatActivity) is.readObject();
                     is.close();
                     fis.close();
                 } catch (IOException e) {
-                    System.out.println("a turn up ting");
-                } catch (ClassNotFoundException e) {
-                    System.out.println("Boo hoo");
+                    System.out.println("I do not like exceptions");
                 }
+//                catch (ClassNotFoundException e) {
+//                    System.out.println("Boo hoo");
+//                }
 
 
 //                JSONObject json = new JSONObject();
@@ -182,18 +183,20 @@ public class Main extends AppCompatActivity implements Serializable {
         }
     }
 
-//    public void close() {
-//        // serialize here
-//        try {
-//            FileOutputStream fos = context.openFileOutput("contacts.txt", Context.MODE_PRIVATE);
-//            ObjectOutputStream os = new ObjectOutputStream(fos);
-//            os.writeObject(this);
-//            os.close();
-//            fos.close();
-//        } catch (IOException e) {
-//            System.out.println("shit");
-//        }
-//    }
+    public void close() {
+        // serialize here
+        try {
+            FileOutputStream fos = new FileOutputStream("contacts.txt");
+            ObjectOutputStream os = new ObjectOutputStream(fos);
+            os.writeObject(ContactList.getContacts());
+            os.close();
+            fos.close();
+            System.out.println("Serialization successful");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("shit");
+        }
+    }
 
 
 
