@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.view.View;
 import android.content.Intent;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.os.CountDownTimer;
 
 
@@ -53,10 +52,6 @@ public class Main extends AppCompatActivity {
             @Override
             public void onClick(View view){
 
-                EditText timeView = findViewById(R.id.time_min);
-                String timeViewString = timeView.getText().toString();
-                String timeViewCut = timeViewString.substring(0,2);
-                timeLeft =  Integer.parseInt(timeViewCut) * 60000;
                 startStopTimer();
 
             }
@@ -75,6 +70,22 @@ public class Main extends AppCompatActivity {
 
 
     public void countTime(){
+
+        EditText timeView = findViewById(R.id.time_min);
+        String timeViewString = timeView.getText().toString();
+        String timeViewCut;
+
+
+
+        if (!timeViewString.contains(":")){
+            timeViewCut = timeViewString;
+        }
+        else {
+            timeViewCut = timeViewString.substring(0,timeViewString.indexOf(":"));
+        }
+
+
+        timeLeft =  Integer.parseInt(timeViewCut) * 60000;
 
         countDownTimer = new CountDownTimer(timeLeft, 1000){
             @Override
@@ -97,6 +108,8 @@ public class Main extends AppCompatActivity {
     }
 
     public void stopTime(){
+        timeLeft = 0;
+        countDownText.setText("DONE");
         countDownTimer.cancel();
         countDownButton.setText("Start");
         flag = false;
@@ -104,7 +117,7 @@ public class Main extends AppCompatActivity {
     }
 
     public void updaterTimer(){
-        int minutes = (int) timeLeft / 60000;
+        int minutes = (int) timeLeft / 60000 ;
         int seconds = (int) timeLeft % 60000 / 1000;
 
         String timeLeftText;
@@ -118,6 +131,10 @@ public class Main extends AppCompatActivity {
     }
 
     public void trigger(){
+
+        countDownText.setText("FUCK");
+
+
 
     }
 
