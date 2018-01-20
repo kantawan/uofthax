@@ -175,7 +175,7 @@ public class Main extends AppCompatActivity implements Serializable {
         countDownText.setText("FUCK");
         try {
             SmsManager smsManager = SmsManager.getDefault();
-            smsManager.sendTextMessage("+12893888447", null, "HELP!!", null, null);
+            smsManager.sendTextMessage("+16043680917", null, "HELP!!", null, null);
             Toast.makeText(this, "Your emergency contacts have been contacted.", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             System.out.println("damn");
