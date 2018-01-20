@@ -15,7 +15,8 @@ import java.util.Arrays;
 public class ContactList extends AppCompatActivity implements Serializable {
 
     private EditText p1,p2,p3;
-    String[] contactArray = new String[3];
+    static String[] contacts = new String[3];
+    //static ArrayList<String> contacts; // = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +45,8 @@ public class ContactList extends AppCompatActivity implements Serializable {
 
             @Override
             public void onClick(View view) {
-                contactArray[0] = p1.getText().toString();
-                saveContacts(contactArray);
+                contacts[0] = p1.getText().toString();
+                //saveContacts(contactArray);
             }
         });
 
@@ -54,8 +55,8 @@ public class ContactList extends AppCompatActivity implements Serializable {
 
             @Override
             public void onClick(View view) {
-                contactArray[1] = p2.getText().toString();
-                saveContacts(contactArray);
+                contacts[1] = p2.getText().toString();
+                //saveContacts(contactArray);
             }
         });
 
@@ -64,33 +65,33 @@ public class ContactList extends AppCompatActivity implements Serializable {
 
             @Override
             public void onClick(View view) {
-                contactArray[2] = p3.getText().toString();
-                saveContacts(contactArray);
+                contacts[2] = p3.getText().toString();
+                //saveContacts(contactArray);
             }
         });
     }
 
-    static ArrayList<String> contacts; // = new ArrayList<>();
+    //static ArrayList<String> contacts; // = new ArrayList<>();
     // private String[] contacts = new String[3];
 
-    public void saveContacts(String[] a) {
+//    public void saveContacts(String[] a) {
+//
+//        // System.arraycopy( a, 0, contacts, 0, a.length );
+//        contacts = new ArrayList<>(Arrays.asList(a));
+//        try {
+//            for (int i = 0; i <= 2; i++) {
+//                if (contacts.get(i).length()==0) {
+//                    contacts.remove(i);
+//                }
+//            }
+//        }
+//        finally {
+//            int s = contacts.size();
+//            System.out.println("Hello");
+//        }
+//    }
 
-        // System.arraycopy( a, 0, contacts, 0, a.length );
-        contacts = new ArrayList<>(Arrays.asList(a));
-        try {
-            for (int i = 0; i <= 2; i++) {
-                if (contacts.get(i).length()==0) {
-                    contacts.remove(i);
-                }
-            }
-        }
-        finally {
-            int s = contacts.size();
-            System.out.println("Hello");
-        }
-    }
-
-    public static ArrayList<String> getContacts() {
+    public static String[] getContacts() {
         return contacts;
     }
 
