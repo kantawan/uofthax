@@ -173,6 +173,9 @@ public class Main extends AppCompatActivity {
 
     public void trigger(){
 
+        String[] contacts = ContactList.getContacts();
+        Toast.makeText(this, contacts[0], Toast.LENGTH_SHORT).show();
+
         countDownText.setText("FUCK");
         try {
             SmsManager smsManager = SmsManager.getDefault();
