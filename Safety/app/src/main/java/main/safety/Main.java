@@ -67,6 +67,7 @@ public class Main extends AppCompatActivity implements Serializable {
                     System.out.println("Boo hoo");
                 }
 
+
 //                JSONObject json = new JSONObject();
 //                try {
 //                    BufferedReader br = new BufferedReader(new FileReader("storage.json"));
@@ -172,11 +173,12 @@ public class Main extends AppCompatActivity implements Serializable {
     public void trigger(){
 
         countDownText.setText("FUCK");
-        smsManager.sendTextMessage("+12893888447", null, "HELP!!", null, null);
-        Toast.makeText(this, "Your emergency contacts have been contacted.", Toast.LENGTH_SHORT).show();
-
-
-
+        try {
+            smsManager.sendTextMessage("+12893888447", null, "HELP!!", null, null);
+            Toast.makeText(this, "Your emergency contacts have been contacted.", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            System.out.println("damn");
+        }
     }
 
 //    public void close() {
