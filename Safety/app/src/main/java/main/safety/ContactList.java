@@ -14,15 +14,17 @@ import java.util.Arrays;
 
 public class ContactList extends AppCompatActivity implements Serializable {
 
+    private EditText p1,p2,p3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_list);
 
         Button toMain =  (Button) findViewById(R.id.back);
-        final EditText p1 = (EditText)findViewById(R.id.editText);
-        final EditText p2 = (EditText)findViewById(R.id.editText2);
-        final EditText p3 = (EditText)findViewById(R.id.editText3);
+        p1 = findViewById(R.id.editText);
+        p2 = (EditText)findViewById(R.id.editText2);
+        p3 = (EditText)findViewById(R.id.editText3);
 
         toMain.setOnClickListener(new View.OnClickListener() {
 
