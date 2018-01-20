@@ -15,6 +15,7 @@ import java.util.Arrays;
 public class ContactList extends AppCompatActivity implements Serializable {
 
     private EditText p1,p2,p3;
+    String[] contactArray = new String[3];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +34,38 @@ public class ContactList extends AppCompatActivity implements Serializable {
                 Intent backIntent = new Intent(ContactList.this, Main.class);
                 startActivity(backIntent);
 
-                String[] array = {p1.getText().toString(), p2.getText().toString(), p3.getText().toString()};
-                saveContacts(array);
+                //String[] array = {, p2.getText().toString(), p3.getText().toString()};
+                //saveContacts(array);
+            }
+        });
+
+        Button button_one =  findViewById(R.id.button);
+        button_one.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                contactArray[0] = p1.getText().toString();
+                saveContacts(contactArray);
+            }
+        });
+
+        Button button_two =  findViewById(R.id.button2);
+        button_two.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                contactArray[1] = p2.getText().toString();
+                saveContacts(contactArray);
+            }
+        });
+
+        Button button_three =  findViewById(R.id.button2);
+        button_three.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                contactArray[2] = p3.getText().toString();
+                saveContacts(contactArray);
             }
         });
     }
