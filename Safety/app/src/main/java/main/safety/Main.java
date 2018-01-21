@@ -56,6 +56,7 @@ public class Main extends AppCompatActivity {
     private long timeLeft = 600000;
 
     private boolean flag;
+    Tracker gps;
 
     static String[] contacts = new String[3];
     //static ArrayList<String> contacts; // = new ArrayList<>();
@@ -147,6 +148,13 @@ public class Main extends AppCompatActivity {
             }
         };
 
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, new String[]{
+                    Manifest.permission.SEND_SMS,}, 10);
+            return;
+
+        }
+
         // asks user for permission to access location
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{
@@ -158,6 +166,9 @@ public class Main extends AppCompatActivity {
         else {
             locationManager.requestLocationUpdates("gps", 5000, 0, locationListener);
         }
+
+
+
 
     }
 
@@ -251,15 +262,28 @@ public class Main extends AppCompatActivity {
         contacts[1] = data.getString(num2, "");
         contacts[2] = data.getString(num3, "");
 
+        gps = new Tracker(Main.this);
+
+        double latitude = gps.getLatitude();
+        double longtitude = gps.getLongitude();
+        try {
+            address = getAddress(latitude, longtitude);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         Toast.makeText(this, contacts[0], Toast.LENGTH_SHORT).show();
         countDownText.setText("FUCK");
+        String message_text = "This is an automatic emergency message! \n I'm at " + address +".";
+
+
 
         for (int i =0; i<3; i++){
-            if (contacts[i] != null && contacts[i] != ""){
+            if (contacts[i] != null){
                 try {
                     SmsManager smsManager = SmsManager.getDefault();
                     smsManager.sendTextMessage("+1" + contacts[i], null,
-                            "This is an automatic emergency message! \n I'm at " + address +".", null, null);
+                            message_text, null, null);
                     Toast.makeText(this, "Your emergency contacts have been contacted.", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     System.out.println("damn");
