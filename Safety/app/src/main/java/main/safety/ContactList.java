@@ -78,6 +78,7 @@ public class ContactList extends AppCompatActivity implements Serializable {
                     saveData(num1, p1.getText().toString());
                     toast1.show();
                 } else {
+                    saveData(num1, p1.getText().toString());
                     toast2.show();
                 }
             }
@@ -95,6 +96,7 @@ public class ContactList extends AppCompatActivity implements Serializable {
                     saveData(num2, p2.getText().toString());
                     toast1.show();
                 } else {
+                    saveData(num2, p2.getText().toString());
                     toast2.show();
                 }
             }
@@ -111,6 +113,7 @@ public class ContactList extends AppCompatActivity implements Serializable {
                     saveData(num3, p3.getText().toString());
                     toast1.show();
                 } else {
+                    saveData(num3, p3.getText().toString());
                     toast2.show();
                 }
             }
@@ -128,7 +131,7 @@ public class ContactList extends AppCompatActivity implements Serializable {
     // Will validate for Canadian standard numbers only atm.
     public boolean valid_num(String num) {
 
-        return isNum(num) && num.length()==9;
+        return isNum(num) && num.length()==10;
     }
 
     //helper for valid_num()
