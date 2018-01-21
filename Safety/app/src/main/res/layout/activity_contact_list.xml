@@ -8,6 +8,7 @@
 
     <EditText
         android:id="@+id/editText"
+        style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
         android:layout_width="0dp"
         android:layout_height="49dp"
         android:layout_marginBottom="80dp"
@@ -24,6 +25,7 @@
 
     <EditText
         android:id="@+id/editText2"
+        style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
         android:layout_width="0dp"
         android:layout_height="49dp"
         android:layout_marginBottom="75dp"
@@ -40,6 +42,7 @@
 
     <EditText
         android:id="@+id/editText3"
+        style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
         android:layout_width="0dp"
         android:layout_height="49dp"
         android:layout_marginBottom="77dp"

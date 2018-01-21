@@ -44,6 +44,7 @@
 
     <EditText
         android:id="@+id/time_min"
+        style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="7dp"
@@ -108,6 +109,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/Logo" />
+        app:srcCompat="@drawable/logo" />
 
 </android.support.constraint.ConstraintLayout>
