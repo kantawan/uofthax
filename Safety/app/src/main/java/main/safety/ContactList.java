@@ -60,7 +60,7 @@ public class ContactList extends AppCompatActivity implements Serializable {
 
         Context context = getApplicationContext();
         CharSequence text1 = "Number saved!";
-        CharSequence text2 = "Invalid number!!";
+        CharSequence text2 = "Invalid number!!" + isNum(num1);
         int duration = Toast.LENGTH_SHORT;
 
         final Toast toast1 = Toast.makeText(context, text1, duration);
@@ -73,7 +73,7 @@ public class ContactList extends AppCompatActivity implements Serializable {
             public void onClick(View view) {
 
                 //saveContacts(contactArray);
-                if (valid_num(num3)) {
+                if (valid_num(p1.getText().toString())) {
                     contacts[0] = p1.getText().toString();
                     saveData(num1, p1.getText().toString());
                     toast1.show();
@@ -91,7 +91,7 @@ public class ContactList extends AppCompatActivity implements Serializable {
             public void onClick(View view) {
 
                 //saveContacts(contactArray);
-                if (valid_num(num3)) {
+                if (valid_num(p2.getText().toString())) {
                     contacts[1] = p2.getText().toString();
                     saveData(num2, p2.getText().toString());
                     toast1.show();
@@ -108,7 +108,7 @@ public class ContactList extends AppCompatActivity implements Serializable {
             @Override
             public void onClick(View view) {
 
-                if (valid_num(num3)) {
+                if (valid_num(p3.getText().toString())) {
                     contacts[2] = p3.getText().toString();
                     saveData(num3, p3.getText().toString());
                     toast1.show();
@@ -136,6 +136,8 @@ public class ContactList extends AppCompatActivity implements Serializable {
 
     //helper for valid_num()
     public static boolean isNum(String strNum) {
+
+        // I dont think this is working
         boolean ret = true;
         try {
 
