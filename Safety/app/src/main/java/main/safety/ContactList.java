@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -57,14 +58,28 @@ public class ContactList extends AppCompatActivity implements Serializable {
             }
         });
 
+        Context context = getApplicationContext();
+        CharSequence text1 = "Number saved!";
+        CharSequence text2 = "Invalid number!!";
+        int duration = Toast.LENGTH_SHORT;
+
+        final Toast toast1 = Toast.makeText(context, text1, duration);
+        final Toast toast2 = Toast.makeText(context, text2, duration);
+
         Button button_one =  findViewById(R.id.button);
         button_one.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                contacts[0] = p1.getText().toString();
-                saveData(num1, p1.getText().toString());
+
                 //saveContacts(contactArray);
+                if (valid_num(num3)) {
+                    contacts[0] = p1.getText().toString();
+                    saveData(num1, p1.getText().toString());
+                    toast1.show();
+                } else {
+                    toast2.show();
+                }
             }
         });
 
@@ -73,9 +88,15 @@ public class ContactList extends AppCompatActivity implements Serializable {
 
             @Override
             public void onClick(View view) {
-                contacts[1] = p2.getText().toString();
-                saveData(num2, p2.getText().toString());
+
                 //saveContacts(contactArray);
+                if (valid_num(num3)) {
+                    contacts[1] = p2.getText().toString();
+                    saveData(num2, p2.getText().toString());
+                    toast1.show();
+                } else {
+                    toast2.show();
+                }
             }
         });
 
@@ -84,9 +105,14 @@ public class ContactList extends AppCompatActivity implements Serializable {
 
             @Override
             public void onClick(View view) {
-                contacts[2] = p3.getText().toString();
-                saveData(num3, p3.getText().toString());
-                //saveContacts(contactArray);
+
+                if (valid_num(num3)) {
+                    contacts[2] = p3.getText().toString();
+                    saveData(num3, p3.getText().toString());
+                    toast1.show();
+                } else {
+                    toast2.show();
+                }
             }
         });
     }
@@ -97,6 +123,25 @@ public class ContactList extends AppCompatActivity implements Serializable {
 
         editor.putString(key, num);
         editor.apply();
+    }
+
+    // Will validate for Canadian standard numbers only atm.
+    public boolean valid_num(String num) {
+
+        return isNum(num) && num.length()==9;
+    }
+
+    //helper for valid_num()
+    public static boolean isNum(String strNum) {
+        boolean ret = true;
+        try {
+
+            Double.parseDouble(strNum);
+
+        }catch (NumberFormatException e) {
+            ret = false;
+        }
+        return ret;
     }
 
     public static String[] getContacts() {
