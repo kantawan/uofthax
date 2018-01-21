@@ -273,9 +273,9 @@ public class Main extends AppCompatActivity {
         }
 
         Toast.makeText(this, contacts[0], Toast.LENGTH_SHORT).show();
-        countDownText.setText("FUCK");
+        countDownText.setText("");
         String message_text = "This is an automatic emergency message! \n I'm at " + address +".";
-        
+
 
         for (int i =0; i<3; i++){
             if (contacts[i] != null){
