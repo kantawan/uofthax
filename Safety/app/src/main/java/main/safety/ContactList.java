@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -14,19 +15,25 @@ import java.util.Arrays;
 
 public class ContactList extends AppCompatActivity implements Serializable {
 
+    DatabaseHandler db;
+    private Button button_one,button_two,button_three;
     private EditText p1,p2,p3;
-    static String[] contacts = new String[3];
-    //static ArrayList<String> contacts; // = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_list);
+        db = new DatabaseHandler(this);
 
         Button toMain =  (Button) findViewById(R.id.back);
         p1 = findViewById(R.id.editText);
         p2 = (EditText)findViewById(R.id.editText2);
         p3 = (EditText)findViewById(R.id.editText3);
+
+        db.addData("0");
+        db.addData("0");
+        db.addData("0");
 
         toMain.setOnClickListener(new View.OnClickListener() {
 
@@ -40,13 +47,16 @@ public class ContactList extends AppCompatActivity implements Serializable {
             }
         });
 
-        Button button_one =  findViewById(R.id.button);
+        button_one =  findViewById(R.id.button);
         button_one.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                contacts[0] = p1.getText().toString();
+                //contacts[0] = p1.getText().toString();
                 //saveContacts(contactArray);
+                String num1 = p1.getText().toString();
+                db.updateNum(num1, 1);
+
             }
         });
 
@@ -55,8 +65,10 @@ public class ContactList extends AppCompatActivity implements Serializable {
 
             @Override
             public void onClick(View view) {
-                contacts[1] = p2.getText().toString();
+                //contacts[1] = p2.getText().toString();
                 //saveContacts(contactArray);
+                String num2 = p2.getText().toString();
+                db.updateNum(num2, 2);
             }
         });
 
@@ -65,34 +77,15 @@ public class ContactList extends AppCompatActivity implements Serializable {
 
             @Override
             public void onClick(View view) {
-                contacts[2] = p3.getText().toString();
+                //contacts[2] = p3.getText().toString();
                 //saveContacts(contactArray);
+                String num3 = p3.getText().toString();
+                db.updateNum(num3, 3);
             }
         });
     }
 
-    //static ArrayList<String> contacts; // = new ArrayList<>();
-    // private String[] contacts = new String[3];
 
-//    public void saveContacts(String[] a) {
-//
-//        // System.arraycopy( a, 0, contacts, 0, a.length );
-//        contacts = new ArrayList<>(Arrays.asList(a));
-//        try {
-//            for (int i = 0; i <= 2; i++) {
-//                if (contacts.get(i).length()==0) {
-//                    contacts.remove(i);
-//                }
-//            }
-//        }
-//        finally {
-//            int s = contacts.size();
-//            System.out.println("Hello");
-//        }
-//    }
 
-    public static String[] getContacts() {
-        return contacts;
-    }
 
 }
