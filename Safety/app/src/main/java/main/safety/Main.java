@@ -272,12 +272,10 @@ public class Main extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        //Toast.makeText(this, contacts[0], Toast.LENGTH_SHORT).show();
-        countDownText.setText("");
-        String message_text = "This is an automatic emergency message! \n I have not reached home by an" +
-                "estimated time, My location is approximately at " + address +".";
-
-
+        Toast.makeText(this, contacts[0], Toast.LENGTH_SHORT).show();
+        countDownText.setText("FUCK");
+        String message_text = "This is an automatic emergency message! \n I'm at " + address +".";
+        
 
         for (int i =0; i<3; i++){
             if (contacts[i] != null){
