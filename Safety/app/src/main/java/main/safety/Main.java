@@ -183,7 +183,7 @@ public class Main extends AppCompatActivity {
         countDownText.setText("FUCK");
 
         for (int i =0; i<3; i++){
-            if (contacts[i] != null){
+            if (contacts[i] != null && contacts[i] != ""){
                 try {
                     SmsManager smsManager = SmsManager.getDefault();
                     smsManager.sendTextMessage("+1" + contacts[i], null, "HELLOOOO!!", null, null);
