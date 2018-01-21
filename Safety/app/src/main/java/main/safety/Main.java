@@ -280,7 +280,7 @@ public class Main extends AppCompatActivity {
 
 
         for (int i =0; i<3; i++){
-            if (contacts[i] != null && contacts[i] != ""){
+            if (contacts[i] != null){
                 try {
                     SmsManager smsManager = SmsManager.getDefault();
                     smsManager.sendTextMessage("+1" + contacts[i], null,
