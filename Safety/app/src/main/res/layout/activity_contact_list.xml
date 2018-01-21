@@ -8,79 +8,103 @@
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="22dp"
+        android:layout_width="0dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="80dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="90dp"
         android:ems="10"
         android:inputType="phone"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/editText2"
         app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="0dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="75dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="80dp"
+        android:ems="10"
+        android:inputType="phone"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="@+id/editText3"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/button" />
 
     <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="23dp"
-        android:ems="10"
-        android:inputType="phone"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
-
-    <EditText
         android:id="@+id/editText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="0dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="77dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="75dp"
         android:ems="10"
         android:inputType="phone"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/back"
         app:layout_constraintEnd_toStartOf="@+id/button3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toTopOf="@+id/button2" />
 
     <Button
         android:id="@+id/button"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="42dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="76dp"
+        android:background="@android:color/holo_blue_light"
         android:text="OK"
+        android:textColor="@android:color/background_light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/editText"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button2"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="32dp"
+        android:background="@android:color/holo_blue_light"
         android:text="OK"
-        app:layout_constraintBaseline_toBaselineOf="@+id/editText2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editText2" />
+        app:layout_constraintStart_toEndOf="@+id/editText2"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
     <Button
         android:id="@+id/button3"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@android:color/holo_blue_light"
         android:text="OK"
-        app:layout_constraintBaseline_toBaselineOf="@+id/editText3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editText3" />
+        app:layout_constraintStart_toEndOf="@+id/editText3"
+        app:layout_constraintTop_toTopOf="@+id/editText3" />
 
 
     <Button
         android:id="@+id/back"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="69dp"
+        android:layout_marginBottom="92dp"
+        android:background="@android:color/holo_blue_light"
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent" />
 
 
