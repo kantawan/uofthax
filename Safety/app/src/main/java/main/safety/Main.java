@@ -41,6 +41,7 @@ public class Main extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -64,19 +65,7 @@ public class Main extends AppCompatActivity {
                 } catch (IOException e) {
                     System.out.println("I do not like exceptions");
                 }
-//                catch (ClassNotFoundException e) {
-//                    System.out.println("Boo hoo");
-//                }
 
-
-//                JSONObject json = new JSONObject();
-//                try {
-//                    BufferedReader br = new BufferedReader(new FileReader("storage.json"));
-//                    DropBoxManager.Entry e = json.fromJson(br, DropBoxManager.Entry.class);
-//                    Log.d("reading", e.toString());
-//                } catch (FileNotFoundException e) {
-//                    e.printStackTrace();
-//                }
             }
 
         });
