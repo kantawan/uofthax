@@ -24,6 +24,10 @@ public class ContactList extends AppCompatActivity implements Serializable {
     public static final String num2 = "num2";
     public static final String num3 = "num3";
 
+//    private EditText phone1;
+//    private EditText phone2;
+//    private EditText phone3;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,12 @@ public class ContactList extends AppCompatActivity implements Serializable {
         p1 = findViewById(R.id.editText);
         p2 = (EditText)findViewById(R.id.editText2);
         p3 = (EditText)findViewById(R.id.editText3);
+
+        // Set phone #s for user to see
+        SharedPreferences data = getSharedPreferences(SHARE_PREF, MODE_PRIVATE);
+        p1.setText(data.getString(num1, ""));
+        p2.setText(data.getString(num2, ""));
+        p3.setText(data.getString(num3, ""));
 
         toMain.setOnClickListener(new View.OnClickListener() {
 
@@ -80,26 +90,6 @@ public class ContactList extends AppCompatActivity implements Serializable {
             }
         });
     }
-
-    //static ArrayList<String> contacts; // = new ArrayList<>();
-    // private String[] contacts = new String[3];
-
-//    public void saveContacts(String[] a) {
-//
-//        // System.arraycopy( a, 0, contacts, 0, a.length );
-//        contacts = new ArrayList<>(Arrays.asList(a));
-//        try {
-//            for (int i = 0; i <= 2; i++) {
-//                if (contacts.get(i).length()==0) {
-//                    contacts.remove(i);
-//                }
-//            }
-//        }
-//        finally {
-//            int s = contacts.size();
-//            System.out.println("Hello");
-//        }
-//    }
 
     public void saveData(String key,String num) {
         SharedPreferences shared = getSharedPreferences(SHARE_PREF, Context.MODE_PRIVATE);
